@@ -10,7 +10,7 @@
     },
     "include": [
       "index.ts",
-      "libfile.ts"                           
+      "lirleur.ts"                           
     ],
     "exclude": [
       "node_modules"                          

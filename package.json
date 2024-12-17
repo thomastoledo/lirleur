@@ -2,27 +2,30 @@
   "devDependencies": {
     "typescript": "^5.7.2"
   },
-  "name": "mylib",
+  "name": "lirleur",
   "version": "0.0.1",
   "keywords": [
+    "time",
+    "date",
+    "readable",
     "js",
     "javascript",
     "utility",
     "typescript"
   ],
-  "description": "mylib description",
+  "description": "Make time human readable",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thomastoledo/Mylib.git"
+    "url": "git+https://github.com/thomastoledo/Lirleur.git"
   },
   "author": "Thomas TOLEDO",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thomastoledo/Mylib/issues"
+    "url": "https://github.com/thomastoledo/Lirleur/issues"
   },
-  "homepage": "https://github.com/thomastoledo/Mylib#readme"
+  "homepage": "https://github.com/thomastoledo/Lirleur#readme"
 }
