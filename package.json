@@ -1,0 +1,28 @@
+{
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "name": "mylib",
+  "version": "0.0.1",
+  "keywords": [
+    "js",
+    "javascript",
+    "utility",
+    "typescript"
+  ],
+  "description": "mylib description",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomastoledo/Mylib.git"
+  },
+  "author": "Thomas TOLEDO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thomastoledo/Mylib/issues"
+  },
+  "homepage": "https://github.com/thomastoledo/Mylib#readme"
+}
