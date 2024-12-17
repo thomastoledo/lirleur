@@ -1,28 +1,29 @@
-
 # Lirleur
 
-**Lirleur** est une librairie légère pour convertir des durées en formats lisibles par les humains. Que ce soit pour des formats précis (`2h 35m 12s`) ou relatifs (`il y a 5 minutes`), **Lirleur** rend le temps plus simple à lire.
+**Lirleur** is a lightweight library that converts durations into human-readable formats. Whether you need precise formats like `2h 35m 12s` or relative formats like `5 minutes ago`, **Lirleur** makes time easy to understand.
 
 ---
 
-## 🚀 Fonctionnalités
+## 🚀 Features
 
-- **Formats précis** : Convertit une durée en heures, minutes et secondes (ex : `2h 5m 12s`).  
-- **Formats relatifs** : Affiche des durées sous forme humaine (ex : `il y a 3 jours`).  
-- **Localisation** : Support multilingue (actuellement `fr` et `en`).  
-- **Mode abrégé** : Affiche des durées simplifiées (`2h 5m` → `2h`).  
-- **Précision personnalisable** : Contrôle le nombre d’unités affichées.  
-- **Détection automatique** : Supporte les secondes et les millisecondes sans effort.
+- **Precise format**: Convert durations into hours, minutes, and seconds (e.g., `2h 5m 12s`).  
+- **Relative format**: Display durations in a human-readable form (e.g., `5 minutes ago`).  
+- **Localization**: Supports multiple languages (`en`, `fr`).  
+- **Abbreviated output**: Shorter formats (e.g., `2h 5m`).  
+- **Custom precision**: Limit the number of time units displayed.  
+- **Auto unit detection**: Automatically detects if input is in seconds or milliseconds.  
 
 ---
 
 ## 📦 Installation
 
+Install via npm:
+
 ```bash
 npm install lirleur
 ```
 
-Ou avec Yarn :
+Or using Yarn:
 
 ```bash
 yarn add lirleur
@@ -30,9 +31,9 @@ yarn add lirleur
 
 ---
 
-## 🔧 Utilisation
+## 🔧 Usage
 
-### Importation
+### Import the function
 
 ```typescript
 import { humanReadableTime } from 'lirleur';
@@ -40,23 +41,23 @@ import { humanReadableTime } from 'lirleur';
 
 ---
 
-### 🔹 Format précis
+### 🔹 Precise format
 
-Affiche la durée sous un format détaillé :
+Convert durations into detailed, human-readable output:
 
 ```typescript
 console.log(humanReadableTime(3662, { unit: 's' }));
 // "1h 1m 2s"
 ```
 
-**Mode abrégé :**
+**Abbreviated format**:
 
 ```typescript
 console.log(humanReadableTime(3662, { unit: 's', short: true }));
 // "1h 1m"
 ```
 
-**Limiter la précision :**
+**Limit precision**:
 
 ```typescript
 console.log(humanReadableTime(3662, { unit: 's', precision: 1 }));
@@ -65,37 +66,39 @@ console.log(humanReadableTime(3662, { unit: 's', precision: 1 }));
 
 ---
 
-### 🔹 Format relatif
+### 🔹 Relative format
 
-Affiche une durée sous forme humaine :
+Display durations in relative time:
 
 ```typescript
-console.log(humanReadableTime(7200, { unit: 's', relative: true }));
-// "il y a 2 heures"
+console.log(humanReadableTime(3600, { unit: 's', relative: true }));
+// "1 hour ago"
 
-console.log(humanReadableTime(86400 * 2, { unit: 's', relative: true, locale: 'en' }));
-// "2 days ago"
+console.log(humanReadableTime(86400 * 2, { unit: 's', relative: true, locale: 'fr' }));
+// "il y a 2 jours"
 ```
 
 ---
 
-### 🔹 Détection automatique des unités
+### 🔹 Automatic unit detection
 
-Si la durée est en millisecondes ou secondes, Lirleur le détecte automatiquement :
+**Lirleur** automatically detects milliseconds or seconds:
 
 ```typescript
-console.log(humanReadableTime(1500)); // Auto-détection : millisecondes
+console.log(humanReadableTime(1500)); // Auto-detection of milliseconds
 // "1s"
 
-console.log(humanReadableTime(1500, { relative: true }));
-// "il y a 1 seconde"
+console.log(humanReadableTime(7200, { relative: true }));
+// "2 hours ago"
 ```
 
 ---
 
-### 🔹 Localisation
+### 🔹 Localization
 
-Support actuel pour **anglais** (`en`) et **français** (`fr`) :
+**Lirleur** supports multiple languages. Currently available:  
+- **English** (`en`)  
+- **French** (`fr`)  
 
 ```typescript
 console.log(humanReadableTime(3662, { locale: 'en' }));
@@ -105,37 +108,43 @@ console.log(humanReadableTime(3662, { locale: 'fr' }));
 // "1 heure 1 minute"
 ```
 
+**Abbreviated localized format**:
+
+```typescript
+console.log(humanReadableTime(3662, { locale: 'fr', short: true }));
+// "1h 1m"
+```
+
 ---
 
 ## 📜 API
 
-### **`humanReadableTime(duration: number, options?: HumanReadableTimeOptions): string`**
+### `humanReadableTime(duration: number, options?: HumanReadableTimeOptions): string`
 
-#### Paramètres :
-- **`duration`** : Durée en secondes ou millisecondes.  
-- **`options`** : Objet d’options (facultatif).  
-  - **`relative`** *(boolean)* : Active le format relatif (`true`) ou précis (`false` par défaut).  
-  - **`unit`** *(‘ms’, ‘s’, ‘auto’)* : Spécifie l’unité de la durée. `auto` détecte automatiquement.  
-  - **`locale`** *(‘en’ | ‘fr’)* : Définit la langue.  
-  - **`precision`** *(number)* : Nombre maximum d’unités à afficher.  
-  - **`short`** *(boolean)* : Active le mode abrégé.  
+#### Parameters:
+- **`duration`**: Duration in seconds or milliseconds.  
+- **`options`** (optional):  
+  - **`relative`** *(boolean)*: Use relative format (`true`) or precise format (`false` by default).  
+  - **`unit`** *(‘ms’, ‘s’, ‘auto’)*: Specify the unit. If `auto`, the unit is detected automatically.  
+  - **`locale`** *(‘en’ | ‘fr’)*: Define the language for the output.  
+  - **`precision`** *(number)*: Number of units to display (default: 2).  
+  - **`short`** *(boolean)*: Enable abbreviated format (e.g., `2h` instead of `2 hours`).  
 
-#### Retourne :
-Une chaîne de caractères représentant la durée sous un format lisible.
+#### Returns:
+A string representing the human-readable duration.
 
 ---
 
-## 🛠️ Exemples Avancés
+## 🛠️ Examples
 
-### Combinaison de fonctionnalités
+### Combined features
 
 ```typescript
 console.log(humanReadableTime(7200, { 
-  unit: 's', 
   relative: true, 
-  locale: 'fr' 
+  locale: 'en' 
 }));
-// "il y a 2 heures"
+// "2 hours ago"
 
 console.log(humanReadableTime(3665, { 
   short: true, 
@@ -144,20 +153,30 @@ console.log(humanReadableTime(3665, {
 // "1h 1m"
 ```
 
----
+### Auto-detection and localization
 
-## 📝 Fonctionnalités à venir
+```typescript
+console.log(humanReadableTime(1500));
+// "1s"
 
-- Support d’autres langues (ex : `es`, `de`, etc.).  
-- Formats personnalisables via des templates (ex : `1 hour and 2 minutes`).  
-- Support des durées négatives (ex : "dans 5 minutes").  
-
----
-
-## 📄 Licence
-
-MIT
+console.log(humanReadableTime(86400 * 30, { relative: true, locale: 'fr' }));
+// "il y a 1 mois"
+```
 
 ---
 
-Prêt à lire le temps différemment ? **Lirleur** est là pour vous simplifier la vie. 🚀  
+## 📝 Planned Features
+
+- Support for additional languages (e.g., Spanish, German).  
+- Customizable templates for time formatting.  
+- Handling of negative durations (e.g., "in 5 minutes").  
+
+---
+
+## 📄 License
+
+MIT  
+
+---
+
+Simplify time, **Lirleur** makes it readable. 🕒
